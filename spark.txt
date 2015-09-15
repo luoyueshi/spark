@@ -5,3 +5,5 @@ val inFile = sc.textFile("/data/test/p1/lid.txt")
 inFile.first()
 
 3  eclipse 集成spark环境(http://www.ithao123.cn/content-549521.html)
+
+4 API 详解 （Spark RDD API详解(一) Map和Reduce） https://www.zybuluo.com/jewes/note/35032
