@@ -1,0 +1,7 @@
+1 启动  spark-shell
+
+2 常用命令
+val inFile = sc.textFile("/data/test/p1/lid.txt")
+inFile.first()
+
+3  eclipse 集成spark环境(http://www.ithao123.cn/content-549521.html)
