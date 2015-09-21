@@ -7,3 +7,28 @@ inFile.first()
 3  eclipse 集成spark环境(http://www.ithao123.cn/content-549521.html)
 
 4 API 详解 （Spark RDD API详解(一) Map和Reduce） https://www.zybuluo.com/jewes/note/35032
+ x 理解rdd元素值
+ a b 对应的 分区号在第几个map中操作mapWith
+
+ 4.1 RDD可以理解成数据，只是分区概念(跨机器) 
+ 例 val a = sc.parallelize(1 to 9, 3)  a为RDD, 3为3个分区
+
+ 4.2 map map转换 collect 显示为RDD
+val a = sc.parallelize(1 to 9, 3)
+val b = a.map(x => x*2)
+a.collect
+b.collect
+
+ 4.3 mapPartitions是map的一个变种
+
+ 4.4 flatMap
+与map类似，区别是原RDD中的元素经map处理后只能生成一个元素，而原RDD中的元素经flatmap处理后可生成多个元素来构建新RDD。 
+举例：对原RDD中的每个元素x产生y个元素（从1到y，y为元素x的值）
+scala> val a = sc.parallelize(1 to 4, 2)
+scala> val b = a.flatMap(x => 1 to x)
+scala> b.collect
+res12: Array[Int] = Array(1, 1, 2, 1, 2, 3, 1, 2, 3, 4)
+从1-4开始循环，每次再执行1到元素值的循环， 输出循环值
+
+
+ 
